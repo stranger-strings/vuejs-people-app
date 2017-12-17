@@ -39,6 +39,10 @@ var HomePage = {
     createPerson: function() {
       this.people.push(this.newPerson);
       this.newPerson = { name: "", bio: "", bioVisible: true };
+    },
+    deletePerson: function(inputPerson) {
+      var index = this.people.indexOf(inputPerson);
+      this.people.splice(index, 1);
     }
   },
   computed: {}
