@@ -18,5 +18,9 @@
 <template id="home-page">
   <div>
     <h1>{{ message }}</h1>
+    <div v-for="person in people">
+      <h2>{{ person.name }}</h2>
+      <p>{{ person.bio }}</p>
+    </div>
   </div>
 </template>
