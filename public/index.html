@@ -17,10 +17,20 @@
 
 <template id="home-page">
   <div>
+
     <h1>{{ message }}</h1>
+    <h1>Here are your people ({{ people.length }} total): </h1>
     <div v-for="person in people">
       <h2>{{ person.name }}</h2>
       <p>{{ person.bio }}</p>
     </div>
+
+    <h2>Add a person</h2>
+    <div>
+      Name: <input type="text" v-model="newPerson.name">
+      Bio: <input type="text" v-model="newPerson.bio">
+      <button v-on:click="createPerson()">Create new person</button>
+    </div>
+
   </div>
 </template>

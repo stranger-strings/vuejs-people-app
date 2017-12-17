@@ -30,11 +30,17 @@ var HomePage = {
             "Excepteur shabby chic semiotics Marfa, quinoa try-hard polaroid pariatur banh mi selfies incididunt brunch trust fund. Ethical dolor PBR&B Tumblr.",
           bioVisible: true
         }
-      ]
+      ],
+      newPerson: { name: "", bio: "", bioVisible: true }
     };
   },
   mounted: function() {},
-  methods: {},
+  methods: {
+    createPerson: function() {
+      this.people.push(this.newPerson);
+      this.newPerson = { name: "", bio: "", bioVisible: true };
+    }
+  },
   computed: {}
 };
 
