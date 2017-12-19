@@ -6,7 +6,8 @@ var HomePage = {
     return {
       message: "Welcome to Vue.js!",
       people: [],
-      newPerson: { name: "", bio: "", bioVisible: true }
+      newPerson: { name: "", bio: "", bioVisible: true },
+      errors: []
     };
   },
   mounted: function() {
@@ -19,12 +20,20 @@ var HomePage = {
   methods: {
     createPerson: function() {
       var params = { name: this.newPerson.name, bio: this.newPerson.bio };
-      axios.post("/v1/people", params).then(
-        function(response) {
-          this.people.push(response.data);
-          this.newPerson = { name: "", bio: "", bioVisible: true };
-        }.bind(this)
-      );
+      axios
+        .post("/v1/people", params)
+        .then(
+          function(response) {
+            this.people.push(response.data);
+            this.newPerson = { name: "", bio: "", bioVisible: true };
+            this.errors = [];
+          }.bind(this)
+        )
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
     },
     deletePerson: function(inputPerson) {
       var index = this.people.indexOf(inputPerson);

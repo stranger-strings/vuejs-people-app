@@ -32,6 +32,9 @@
     </div>
 
     <h2>Add a person</h2>
+    <ul>
+      <li v-for="error in errors">{{ error }}</li>
+    </ul>
     <div>
       Name: <input type="text" v-model="newPerson.name">
       Bio: <input type="text" v-model="newPerson.bio">
