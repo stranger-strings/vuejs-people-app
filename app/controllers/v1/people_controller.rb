@@ -9,7 +9,10 @@ class V1::PeopleController < ApplicationController
       name: params[:name],
       bio: params[:bio]
     )
-    person.save
-    render json: person.as_json
+    if person.save
+      render json: person.as_json
+    else
+      render json: { errors: person.errors.full_messages }, status: :bad_request
+    end
   end
 end
