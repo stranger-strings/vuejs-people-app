@@ -7,7 +7,8 @@ class V1::PeopleController < ApplicationController
   def create
     person = Person.new(
       name: params[:name],
-      bio: params[:bio]
+      bio: params[:bio],
+      image: params[:image]
     )
     if person.save
       render json: person.as_json
