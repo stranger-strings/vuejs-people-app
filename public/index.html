@@ -6,10 +6,21 @@
   <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
   <script src="index.js" defer></script>
   <style>
     .strike {
       text-decoration: line-through;
+    }
+
+    #map {
+      height: 400px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
@@ -24,6 +35,9 @@
   <div>
 
     <h1>{{ message }}</h1>
+
+    <div id="map"></div>
+
     <h1>Here are your people ({{ people.length }} total): </h1>
     <div v-for="person in people">
       <h2 v-on:click="toggleBio(person)">{{ person.name }}</h2>
